@@ -44,4 +44,15 @@ public class StudentService {
     public StudentDto getStudentById(Integer id) {
         return studentMap.get(id);
     }
+
+    public boolean refreshStudents(StudentDto studentDto) {
+        if (studentMap.containsKey(studentDto.getId())){
+            StudentDto student = studentMap.get(studentDto.getId());
+            student.setName(studentDto.getName());
+            student.setGender(studentDto.getGender());
+            student.setNote(studentDto.getNote());
+            return true;
+        }
+        return false;
+    }
 }

@@ -43,4 +43,12 @@ public class StudentController {
         }
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/students")
+    public ResponseEntity refreshStudents(@RequestBody StudentDto studentDto){
+        if (studentService.refreshStudents(studentDto)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.noContent().build();
+    }
 }
