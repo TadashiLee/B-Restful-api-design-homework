@@ -40,4 +40,8 @@ public class StudentService {
         }
         return false;
     }
+
+    public StudentDto getStudentById(Integer id) {
+        return studentMap.get(id);
+    }
 }

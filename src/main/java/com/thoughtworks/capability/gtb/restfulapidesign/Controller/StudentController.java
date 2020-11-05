@@ -25,6 +25,11 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.getStudents());
     }
 
+    @GetMapping("/students/{id}")
+    public ResponseEntity<StudentDto> getStudentById (@PathVariable(value = "id") Integer id){
+        return ResponseEntity.ok().body(studentService.getStudentById(id));
+    }
+
     @PostMapping("/students")
     public ResponseEntity addStudents (@RequestBody StudentDto studentDto) {
         studentService.addStudent(studentDto);
