@@ -18,4 +18,12 @@ public class GroupService {
     public List<GroupDto> getGroups() {
         return new ArrayList<>(groupMap.values());
     }
+
+    public boolean refreshGroups(GroupDto groupDto) {
+        if(groupMap.containsKey(groupDto.getId())){
+            groupMap.get(groupDto.getId()).setName(groupDto.getName());
+            return true;
+        }
+        return false;
+    }
 }

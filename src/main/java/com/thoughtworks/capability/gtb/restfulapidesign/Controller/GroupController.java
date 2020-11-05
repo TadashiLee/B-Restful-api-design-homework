@@ -3,8 +3,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.Controller;
 import com.thoughtworks.capability.gtb.restfulapidesign.Dto.GroupDto;
 import com.thoughtworks.capability.gtb.restfulapidesign.Service.GroupService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +16,16 @@ public class GroupController {
         this.groupService = groupService;
     }
 
+    @PatchMapping("/groups")
+    public ResponseEntity refreshGroups(@RequestBody GroupDto groupDto) {
+        if (groupService.refreshGroups(groupDto)){
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/groups")
-    public ResponseEntity<List<GroupDto>> getGroups(){
+    public ResponseEntity<List<GroupDto>> getGroups() {
         return ResponseEntity.ok().body(groupService.getGroups());
     }
 }
