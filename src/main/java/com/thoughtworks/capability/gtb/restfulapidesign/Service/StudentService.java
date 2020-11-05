@@ -18,13 +18,16 @@ public class StudentService {
         studentMap.put(4, new StudentDto(4, "tracy", "female", "48"));
     }
 
-    public List<StudentDto> getStudent() {
-        Collection<StudentDto> studentDtoCollection = studentMap.values();
-        ArrayList<StudentDto> studentDtos = new ArrayList<>(studentDtoCollection);
-        return studentDtos;
+    public void addStudent(StudentDto studentDto) {
+        studentDto.setId(studentMap.size()+1);
+        studentMap.put(studentMap.size()+1,studentDto);
     }
 
-    public List<StudentDto> getStudentByGender(String gender) {
+    public List<StudentDto> getStudents() {
+        return new ArrayList<>(studentMap.values());
+    }
+
+    public List<StudentDto> getStudentsByGender(String gender) {
         Collection<StudentDto> studentDtoCollection = studentMap.values();
         ArrayList<StudentDto> studentDtos = new ArrayList<>(studentDtoCollection);
         List<StudentDto> studentDtosByGender = studentDtos.stream().filter(studentDto -> studentDto.getGender().equals(gender)).collect(Collectors.toList());
