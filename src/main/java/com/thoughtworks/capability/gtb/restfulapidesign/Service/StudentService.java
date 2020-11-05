@@ -28,9 +28,12 @@ public class StudentService {
     }
 
     public List<StudentDto> getStudentsByGender(String gender) {
-        Collection<StudentDto> studentDtoCollection = studentMap.values();
-        ArrayList<StudentDto> studentDtos = new ArrayList<>(studentDtoCollection);
+        ArrayList<StudentDto> studentDtos = new ArrayList<>(studentMap.values());
         List<StudentDto> studentDtosByGender = studentDtos.stream().filter(studentDto -> studentDto.getGender().equals(gender)).collect(Collectors.toList());
         return studentDtosByGender;
+    }
+
+    public void deleteStudent(Integer id) {
+        studentMap.remove(id);
     }
 }
