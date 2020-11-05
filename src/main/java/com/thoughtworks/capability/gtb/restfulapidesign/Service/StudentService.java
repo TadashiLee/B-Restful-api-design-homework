@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 @Service
 public class StudentService {
 
-    private Map<Integer, StudentDto> studentMap = new HashMap<>();
+    Map<Integer, StudentDto> studentMap = new HashMap<>();
 
     public StudentService(){
         studentMap.put(1, new StudentDto(1, "lucky", "male", "12"));
