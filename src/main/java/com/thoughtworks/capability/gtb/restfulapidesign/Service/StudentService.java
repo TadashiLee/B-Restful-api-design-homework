@@ -33,7 +33,11 @@ public class StudentService {
         return studentDtosByGender;
     }
 
-    public void deleteStudent(Integer id) {
-        studentMap.remove(id);
+    public boolean deleteStudent(Integer id) {
+        if (studentMap.containsKey(id)){
+            studentMap.remove(id);
+            return true;
+        }
+        return false;
     }
 }
