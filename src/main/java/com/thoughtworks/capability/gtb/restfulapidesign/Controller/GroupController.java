@@ -18,8 +18,8 @@ public class GroupController {
     }
 
     @PatchMapping
-    public ResponseEntity refreshGroups(@RequestBody GroupDto groupDto) {
-        if (groupService.refreshGroups(groupDto)){
+    public ResponseEntity refreshGroupsName(@RequestBody GroupDto groupDto) {
+        if (groupService.refreshGroupsName(groupDto)){
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.noContent().build();

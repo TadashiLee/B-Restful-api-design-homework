@@ -16,6 +16,10 @@ public class StudentService {
         studentMap.put(2, new StudentDto(2, "lili", "female", "23"));
         studentMap.put(3, new StudentDto(3, "bob", "male", "35"));
         studentMap.put(4, new StudentDto(4, "tracy", "female", "48"));
+        studentMap.put(5, new StudentDto(5, "durant", "male", "12"));
+        studentMap.put(6, new StudentDto(6, "adil", "female", "23"));
+        studentMap.put(7, new StudentDto(7, "linda", "male", "35"));
+        studentMap.put(8, new StudentDto(8, "lee", "female", "48"));
     }
 
     public void addStudent(StudentDto studentDto) {
