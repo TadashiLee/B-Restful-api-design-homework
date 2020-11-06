@@ -19,8 +19,8 @@ public class GroupController {
 
     @PatchMapping
     public ResponseEntity refreshGroupsName(@RequestBody GroupDto groupDto) {
-        if (groupService.refreshGroupsName(groupDto)){
-            return ResponseEntity.ok().build();
+        if (groupService.refreshGroupsName(groupDto).getId() != null){
+            return ResponseEntity.ok().body(groupService.refreshGroupsName(groupDto));
         }
         return ResponseEntity.noContent().build();
     }

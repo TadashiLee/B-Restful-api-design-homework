@@ -47,8 +47,8 @@ public class StudentController {
 
     @PatchMapping
     public ResponseEntity refreshStudents(@RequestBody StudentDto studentDto){
-        if (studentService.refreshStudents(studentDto)) {
-            return ResponseEntity.ok().build();
+        if (studentService.refreshStudents(studentDto).getId() != null) {
+            return ResponseEntity.ok().body(studentService.refreshStudents(studentDto));
         }
         return ResponseEntity.noContent().build();
     }

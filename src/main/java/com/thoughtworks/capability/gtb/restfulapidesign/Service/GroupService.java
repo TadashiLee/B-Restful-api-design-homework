@@ -37,7 +37,7 @@ public class GroupService {
             res.get(i).sort((o1, o2) -> o1.getId() - o2.getId());
         }
         for(int i=0; i< 6; i++){
-            groupMap.put(i,new GroupDto(i+1, groupName[i],"hi group"+(i+1)+"!",res.get(i)));
+            groupMap.put(i+1,new GroupDto(i+1, groupName[i],"hi group"+(i+1)+"!",res.get(i)));
         }
     }
 
@@ -46,11 +46,11 @@ public class GroupService {
         return new ArrayList<>(groupMap.values());
     }
 
-    public boolean refreshGroupsName(GroupDto groupDto) {
+    public GroupDto refreshGroupsName(GroupDto groupDto) {
         if(groupMap.containsKey(groupDto.getId())){
             groupName[groupDto.getId()-1] = groupDto.getName();
-            return true;
+            return groupMap.get(groupDto.getId());
         }
-        return false;
+        return new GroupDto();
     }
 }

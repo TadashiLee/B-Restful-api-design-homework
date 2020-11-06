@@ -49,7 +49,7 @@ public class StudentService {
         return studentMap.get(id);
     }
 
-    public boolean refreshStudents(StudentDto studentDto) {
+    public StudentDto refreshStudents(StudentDto studentDto) {
         if (studentMap.containsKey(studentDto.getId())){
             StudentDto student = studentMap.get(studentDto.getId());
             if (studentDto.getName() != null){
@@ -61,8 +61,8 @@ public class StudentService {
             if (studentDto.getNote() != null) {
                 student.setNote(studentDto.getNote());
             }
-            return true;
+            return student;
         }
-        return false;
+        return new StudentDto();
     }
 }
