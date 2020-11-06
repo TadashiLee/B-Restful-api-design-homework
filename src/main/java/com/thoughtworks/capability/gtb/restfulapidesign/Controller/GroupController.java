@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/groups/v1")
 public class GroupController {
 
     private final GroupService groupService;
@@ -16,7 +17,7 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-    @PatchMapping("/groups")
+    @PatchMapping
     public ResponseEntity refreshGroups(@RequestBody GroupDto groupDto) {
         if (groupService.refreshGroups(groupDto)){
             return ResponseEntity.ok().build();
@@ -24,7 +25,7 @@ public class GroupController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/groups")
+    @GetMapping
     public ResponseEntity<List<GroupDto>> getGroups() {
         return ResponseEntity.ok().body(groupService.getGroups());
     }

@@ -19,26 +19,26 @@ public class GroupService {
 
     public GroupService(StudentService studentService){
         this.studentService = studentService;
-        this.groupStudents();
+//        this.groupStudents();
     }
 
-    private void groupStudents() {
-        List<List<StudentDto>> res = new ArrayList<>();
-        int num = studentService.studentMap.size() / 6;
-        int remain = studentService.studentMap.size() % 6;
-        List<StudentDto> studentDtos = new ArrayList<>(studentService.studentMap.values());
-        for(int i = 0; i < num * 6; i += num) {
-            List<StudentDto> group = new ArrayList<>(studentDtos.subList(i, i + num));
-            group.sort((o1, o2) -> o1.getId() - o2.getId());
-            res.add(group);
-        }
-
-        for(int i = 0; i < remain; ++i) {
-            res.get(i).add(studentDtos.get(num * 6 + i));
-            res.get(i).sort((o1, o2) -> o1.getId() - o2.getId());
-        }
-        return res;
-    }
+//    private void groupStudents() {
+//        List<List<StudentDto>> res = new ArrayList<>();
+//        int num = studentService.studentMap.size() / 6;
+//        int remain = studentService.studentMap.size() % 6;
+//        List<StudentDto> studentDtos = new ArrayList<>(studentService.studentMap.values());
+//        for(int i = 0; i < num * 6; i += num) {
+//            List<StudentDto> group = new ArrayList<>(studentDtos.subList(i, i + num));
+//            group.sort((o1, o2) -> o1.getId() - o2.getId());
+//            res.add(group);
+//        }
+//
+//        for(int i = 0; i < remain; ++i) {
+//            res.get(i).add(studentDtos.get(num * 6 + i));
+//            res.get(i).sort((o1, o2) -> o1.getId() - o2.getId());
+//        }
+//        return res;
+//    }
 
     public List<GroupDto> getGroups() {
         return new ArrayList<>(groupMap.values());

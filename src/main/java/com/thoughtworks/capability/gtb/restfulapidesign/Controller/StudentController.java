@@ -9,6 +9,7 @@ import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
+@RequestMapping("/students/v1")
 public class StudentController {
 
     private final StudentService studentService;
@@ -17,7 +18,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/students")
+    @GetMapping
     public ResponseEntity<List<StudentDto>> getStudents (@RequestParam(name="gender", required = false) String gender){
         if (gender != null){
             return ResponseEntity.ok().body(studentService.getStudentsByGender(gender));
@@ -25,18 +26,18 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.getStudents());
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<StudentDto> getStudentById (@PathVariable(value = "id") Integer id){
         return ResponseEntity.ok().body(studentService.getStudentById(id));
     }
 
-    @PostMapping("/students")
+    @PostMapping
     public ResponseEntity addStudents (@RequestBody StudentDto studentDto) {
         studentService.addStudent(studentDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteStudents(@PathVariable(value = "id") Integer id){
         if (studentService.deleteStudent(id)){
             return ResponseEntity.ok().build();
@@ -44,7 +45,7 @@ public class StudentController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/students")
+    @PatchMapping
     public ResponseEntity refreshStudents(@RequestBody StudentDto studentDto){
         if (studentService.refreshStudents(studentDto)) {
             return ResponseEntity.ok().build();
