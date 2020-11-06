@@ -52,9 +52,15 @@ public class StudentService {
     public boolean refreshStudents(StudentDto studentDto) {
         if (studentMap.containsKey(studentDto.getId())){
             StudentDto student = studentMap.get(studentDto.getId());
-            student.setName(studentDto.getName());
-            student.setGender(studentDto.getGender());
-            student.setNote(studentDto.getNote());
+            if (studentDto.getName() != null){
+                student.setName(studentDto.getName());
+            }
+            if (studentDto.getGender() != null){
+                student.setGender(studentDto.getGender());
+            }
+            if (studentDto.getNote() != null) {
+                student.setNote(studentDto.getNote());
+            }
             return true;
         }
         return false;
