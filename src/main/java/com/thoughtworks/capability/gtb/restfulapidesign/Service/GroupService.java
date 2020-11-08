@@ -19,7 +19,7 @@ public class GroupService {
         this.studentService = studentService;
     }
 
-    private void groupStudents() {
+    public List<GroupDto> groupStudents() {
         List<List<StudentDto>> res = new ArrayList<>();
         int num = studentService.studentMap.size() / 6;
         int remain = studentService.studentMap.size() % 6;
@@ -39,10 +39,10 @@ public class GroupService {
         for(int i=0; i< 6; i++){
             groupMap.put(i+1,new GroupDto(i+1, groupName[i],"hi group"+(i+1)+"!",res.get(i)));
         }
+        return this.getGroups();
     }
 
     public List<GroupDto> getGroups() {
-        this.groupStudents();
         return new ArrayList<>(groupMap.values());
     }
 

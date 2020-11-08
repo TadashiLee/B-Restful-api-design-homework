@@ -17,12 +17,17 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-    @PatchMapping
+    @PatchMapping("/name")
     public ResponseEntity refreshGroupsName(@RequestBody GroupDto groupDto) {
         if (groupService.refreshGroupsName(groupDto).getId() != null){
             return ResponseEntity.ok().body(groupService.refreshGroupsName(groupDto));
         }
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/new-groups")
+    public ResponseEntity<List<GroupDto>> refreshGroups(){
+        return ResponseEntity.ok().body(groupService.groupStudents());
     }
 
     @GetMapping
